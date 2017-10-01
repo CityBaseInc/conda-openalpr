@@ -1,0 +1,26 @@
+package:
+  name: openalpr
+
+source: 
+  git_url: https://github.com/openalpr/openalpr
+  #fn: opencv-3.3.0.tar.gz
+  #url: https://github.com/opencv/opencv/archive/3.3.0.tar.gz
+
+build:
+  number: 0
+
+requirements:
+  build:
+     - python
+     - opencv3
+     - curl
+     - openssl 1.0.*         [unix]
+     - cmake
+     - tesseract
+     - leptonica
+  run:
+     - python
+
+test:
+  imports:
+     - openalpr
