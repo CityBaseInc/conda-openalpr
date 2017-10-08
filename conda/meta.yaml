@@ -7,6 +7,8 @@ source:
   git_url: https://github.com/openalpr/openalpr.git
   #fn: opencv-3.3.0.tar.gz
   #url: https://github.com/opencv/opencv/archive/3.3.0.tar.gz
+  patches:
+    - curl-fix.patch
 
 build:
   number: 0
