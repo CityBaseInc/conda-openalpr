@@ -1,29 +1,48 @@
 package:
   name: openalpr
-  version: 2.3.x
+  version: 2.3.0
 
 source:
-  git_rev: 3a86c5f
+  git_rev: v2.3.0
   git_url: https://github.com/openalpr/openalpr.git
-  #fn: opencv-3.3.0.tar.gz
-  #url: https://github.com/opencv/opencv/archive/3.3.0.tar.gz
-  patches:
-    - curl-fix.patch
 
 build:
   number: 0
+  skip: True # [not linux]
 
 requirements:
   build:
      - python >=3.6
-     - opencv3 >=3.4.6
-     - curl >=7.64.0
-     - openssl 1.0.*         [unix]
      - cmake >=3.14.5
-     - tesseract >=4.0.0
-     - leptonica >=1.76.0
+     - make
+     - git >=1.8
+     - pkg-config
+     - {{ compiler('c') }}
+     - {{ compiler('cxx') }}
+     - {{ cdt('libx11') }}
+     - {{ cdt('libxau') }}
+     - {{ cdt('libxdamage') }}
+     - {{ cdt('libxfixes') }}
+     - {{ cdt('libselinux') }}
+     - {{ cdt('mesa-libgl-devel') }}
+     - {{ cdt('mesa-dri-drivers') }}
+     - {{ cdt('libxxf86vm') }}
+  host:
+     - python >=3.6
+     - opencv ==3.4.4
+     - tesseract ==3.*
+     - leptonica >=1.74.*
+     - qt
+     - curl >=7.64.0
+     - xorg-libxext
   run:
      - python >=3.6
+     - opencv ==3.4.4
+     - tesseract ==3.*
+     - leptonica >=1.74.*
+     - qt
+     - curl >=7.64.0
+     - xorg-libxext
 test:
   imports:
      - openalpr
