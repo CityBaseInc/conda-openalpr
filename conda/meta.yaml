@@ -3,12 +3,10 @@ package:
   version: 2.3.x
 
 source:
-  git_rev: 3a86c5f
+  git_rev: v2.3.0
   git_url: https://github.com/openalpr/openalpr.git
   #fn: opencv-3.3.0.tar.gz
   #url: https://github.com/opencv/opencv/archive/3.3.0.tar.gz
-  patches:
-    - curl-fix.patch
 
 build:
   number: 0
@@ -16,14 +14,17 @@ build:
 requirements:
   build:
      - python >=3.6
-     - opencv3 >=3.4.6
+     - opencv ==3.4.4
      - curl >=7.64.0
-     - openssl 1.0.*         [unix]
      - cmake >=3.14.5
-     - tesseract >=4.0.0
-     - leptonica >=1.76.0
+     - tesseract ==3.*
+     - leptonica >=1.74.*
+     - pkg-config
   run:
      - python >=3.6
+     - tesseract ==3.*
+     - leptonica >=1.74.*
+     - opencv ==3.4.4
 test:
   imports:
      - openalpr
